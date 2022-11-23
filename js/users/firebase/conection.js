@@ -1,4 +1,4 @@
-import { getFirestore, getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js';
 
 const firebaseConfig = {
@@ -13,7 +13,6 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 export const db = getFirestore();
 
