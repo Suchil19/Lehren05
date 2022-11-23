@@ -1,5 +1,5 @@
 import {db} from '../firebase/conection.js';
-import {addDoc, deleteDoc, getDoc, collection, onSnapshot, doc} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
+import {addDoc, deleteDoc, getDoc, collection, onSnapshot, doc, getDocs} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 
 console.log(fs);
 /**
@@ -45,16 +45,25 @@ export const getUserByEmail = (email) => {
 
 /**
  * @description Funcion que me ayudara a eliminar un usuario de la coleccion
- * @param id {string}
+ * @param email {string}
  * */
-export const deleteUser = (user) => {
-    deleteDoc(doc(db, 'users', user.email));
+export const deleteUser = (email) => {
+    deleteDoc(doc(db, 'users', email));
 };
 
-export const userAlreadyExists = async (email) => {
+export const userAlreadyExists = (email) => {
     const docRef = doc(db, 'users', email);
-    const docSnap = await getDoc(docRef);
+    const docSnap = getDoc(docRef);
     console.log(docSnap, !!docSnap.exists());
     return !!docSnap.exists();
+
 }
+
+export const getAllUsers = async () => {
+    const querySnapshot = await getDocs(collection(db, "cities"));
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+};
 
