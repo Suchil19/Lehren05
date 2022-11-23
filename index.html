@@ -26,14 +26,23 @@
 <link rel="stylesheet" href="./css/style.css">
 <script src="https://kit.fontawesome.com/95dc93da07.js"></script>
 </head>
-<body>
+
+
+<body ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
+  <div id="preloader"></div>
 <!-- partial:index.partial.html -->
+
+
+
+
 <!-- nav -->
 <nav class="sidebar">
   <div class="nav-header">
     <div class="logo-wrap">
       <a class="logo-icon" href="#"><img alt="logo-icon" src="./img/docqui.png" width="40"></a>
+      <div id="contenido">
       <a class="logo-text" href="#">Lehren</a>
+    </div>
     </div>
 
     <div class="nav-search">
@@ -45,25 +54,28 @@
   </div>
   <ul class="nav-categories ul-base">
     <li style="display: none;" class="menu-item logged-in"><a href="#"><i class="fas fa-home"></i>&nbsp;Inicio</a></li>
-    <li style="display: none;" class="menu-item logged-in"><a href="#"><i class="fas fa-home"></i>&nbsp;Acerca de</a></li>
-    <li style="display: none;" class="menu-item logged-in"><a href="#">Contacto</a></li>
+    <li style="display: none;" class="menu-item logged-in"><a href="#">&nbsp;Acerca de</a></li>
+    <li style="display: none;" class="menu-item logged-in"><a href="#"><i class="fa fa-address-card"></i>&nbsp;Contacto</a></li>
     <li style="display: none;" class="menu-item logged-in"><a href="#">Convocatoria</a></li>
-    <li style="display: none;" class="menu-item logged-in"><a href="#">Alumnos</a></li>
-    <li style="display: none;" class="menu-item logged-in"><a href="#">Docentes</a></li>
+    <li><a href="./alumnos/mi-espacio.html"><i class="fas fa-graduation-cap"></i>&nbsp;Alumnos</a></li>
+    <li style="display: none;" class="menu-item logged-in"><a href="#"><i class="fa-regular fa-chalkboard-user"></i>&nbsp;Docentes</a></li>
     <li style="display: none;" class="menu-item logged-in"><a href="#">Directivos</a></li>
+    <li style="display: none;" class="menu-item logged-in"><a href="#">Egresados</a></li>
+
 
     <li style="display: none;" class="logged-out menu-item">
         <a class=" registration" href="#" data-toggle="modal" data-target="#signinModal"><i class="fas fa-user"></i>&nbsp;Accede</a>
     </li>
-    <li style="display: none;" class="menu-item logged-in"><a class="registration" href="./clinica/promociones/avisos.html"><i class="fas fa-bell"></i>&nbsp;Promociones</a></li>&nbsp;
+    <li style="display: none;" class="menu-item logged-in"><a class="registration" href="./clinica/promociones/avisos.html"><i class="fas fa-bell"></i>&nbsp;Avisos</a></li>&nbsp;
     <li style="display: none;" class="boton-salir logged-in"><a href="#" id="logout" onclick="noticias()"><i class="fas fa-sign-out-alt"></i>&nbsp;Salir</a></li>
     <!--li><a href="#">Entertainment</a></li>
     <li><a href="#">Sports</a></li-->
   </ul>
+  <br>
   <ul class="social ul-base">
-    <li><a href="#" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+    <li><a href="#" class="twitter" target="_blank"><i class="fa fa-instagram"></i></a></li>
     <li><a href="#" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="#" class="google-plus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+    <li><a href="#" class="google-plus" target="_blank"><i class="fa fa-twitter"></i></a></li>
     <li><a href="#" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
   </ul>
   <div class="copyright">
@@ -118,11 +130,11 @@
     </div>
     <div class="header-menu">
       <ul class="ul-base">
-        <li><a href="#" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#" class="twitter" target="_blank"><i class="fa fa-instagram"></i></a></li>
         <li><a href="#" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#" class="google-plus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="#" class="google-plus" target="_blank"><i class="fa fa-twitter"></i></a></li>
         <li><a href="#" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
-        <li><a href="#">Login</a></li>
+        <!--li><a href="#">Login</a></li-->
         
       </ul>
       
@@ -288,16 +300,102 @@
 </svg>
 
 
-<section id="hero">
-  <div class="fade"></div>
-  <div class="hero-text">
-      <h1>Educación a distancia</h1>
-      <p>Impulsamos con tecnología la educación a distancia</p>
-      <div id="contenido">
 
-      </div>
+
+
+<div class="viewport">
+  <!--div class="title">
+   <h1> Modern Cards Design.     </h1> 
+  </div-->
+<div class="cards">
+ 
+  <div class="card">
+    <a href="https://moodle.org/?lang=es">
+    <div class="card_img card1">
+         <div class="plus"><p>+</p></div>
+    </div>
+    <h3>Canvas</h3>
+    <div class="line">
+    </div>
+    <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.  </p>
+  </a>
   </div>
-</section>
+
+
+  <div class="card">
+    <a href="https://moodle.org/?lang=es">
+    <div class="card_img card2">
+      <div class="plus"><p>+</p></div>
+    </div>
+    <h3>Moodle</h3>
+    <div class="line">
+    </div>
+   <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+  </a>
+  </div>
+
+
+  <div class="card">
+    <a href="https://moodle.org/?lang=es">
+    <div class="card_img card3">
+      <div class="plus"><p>+</p></div>
+    </div>
+    <h3>Edublocks</h3>
+    <div class="line">
+    </div>
+    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </a>
+  </div>
+
+
+  <div class="card">
+    <a href="https://moodle.org/?lang=es">
+    <div class="card_img card4">
+      <div class="plus"><p>+</p></div>
+    </div>
+    <h3>Figma</h3>
+    <div class="line">
+    </div>
+    <p>voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </a>
+    </div>
+
+
+  <div class="card">
+    <a href="https://moodle.org/?lang=es">
+    <div class="card_img card5">
+      <div class="plus"><p>+</p></div>
+    </div>
+    <h3>Coursera</h3>
+    <div class="line">
+    </div>
+   <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.</p>
+  </a>
+  </div>
+
+  
+  <div class="card">
+    <a href="https://moodle.org/?lang=es">
+    <div class="card_img card6">
+      <div class="plus"><p>+</p></div>
+    </div>
+    <h3>TITLE HERE</h3>
+    <div class="line">
+    </div>
+    <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  </p>
+  </div>
+</a>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
 
       <!--BOOTSTRAP SCRIPTS-->
 
@@ -384,7 +482,76 @@
 
 
 
-                  
+
+                        <!-- Carbon -->
+      <section class="carbon dark">
+        <div class="container-banner">
+        <div class="content">
+          <h2>Lerehn</h2>
+          <p>Grupo Lehren</p>
+            <a href="#" class="btn">
+              Learn More <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+      </div>
+      </section>
+
+
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>Acerca de</h6>
+          <br>
+          <p class="text-justify">
+            Generamos experiencias de aprendizaje ancladas en experimentación, 
+            libertad creativa y discernimiento crítico. Nos transformamos, y 
+            transformamos a los demás..</p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Grupo Lehren</h6>
+          <br>
+          <ul class="footer-links">
+            <li><a href="#">SAE Institute México</a></li>
+            <li><a href="#">Instituto Artek</a></li>
+            <li><a href="#">Instituto Genus</a></li>
+            
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Lehren</h6>
+          <br>
+          <ul class="footer-links">
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Politicas de privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; by 
+       <a href="#">Grupo Lehren</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="dribbble" href="#"><i class="fa fa-instagram"></i></a></li>
+            <!--li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li-->   
+          </ul>
+        </div>
+      </div>
+    </div>
+</footer>                  
 
 
 

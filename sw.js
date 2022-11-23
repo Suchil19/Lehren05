@@ -1,6 +1,6 @@
 
 //asignar un nombre y versión al cache
-const CACHE_NAME = 'v1_autolavado_chapultepec',
+const CACHE_NAME = 'v1_grupo_lehren',
 urlsToCache = [
   '../',
   './img/ProgramadorFitness.png',

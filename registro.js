@@ -207,11 +207,13 @@ function aparece(user){
   contenido.innerHTML = `
  
   <div ">
+  <br>
+  <p>Bienvenido.</p>
   <h4 class="alert-heading">${user.email}</h4>
-  <p>Gracias por registrarte.</p>
+
 
   
-  </div-->
+  </div>
   
   `;
 }
