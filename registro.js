@@ -81,7 +81,8 @@ googleButton.addEventListener('click', e => {
   .then(result => {
     console.log('google sign in');
     console.log(result);
-    const {user: {email}} = result;
+    const {user} = result;
+    const {email} = user;
     console.log(email);
     sendUserInformation();
     // aqui van los modales para cerrar 
