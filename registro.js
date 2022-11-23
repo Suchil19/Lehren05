@@ -31,11 +31,10 @@ signupForm.addEventListener('submit', (e) => {
             $('#signupModal').modal('hide');
             console.log('sing up');
             //sendUserInformation(user);
-            console.log(userCredential)
+            console.log(userCredential);
             setTimeout(() => {
                 window.location='index.html';
             }, 5000);
-
 
         })
 });
@@ -55,6 +54,7 @@ signinForm.addEventListener('submit', e => {
             //Close the modal
             $('#signinModal').modal('hide')
             console.log('sing in');
+            console.log(userCredential);
             //lo agregue yoppp
             setTimeout(() => {
                 window.location='index.html';
