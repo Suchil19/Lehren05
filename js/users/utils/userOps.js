@@ -11,8 +11,8 @@ import {addDoc, deleteDoc, updateDoc, getDoc, collection, onSnapshot, doc} from 
         email: user.email,
         type: user.type
     };
-    const collection = collection(db, "users");
-    addDoc(collection, userToSave).then(response => {
+    const usersCollection = collection(db, 'users');
+    addDoc(usersCollection, userToSave).then(response => {
         console.log(response);
     }).catch(error => {
         console.log(error);
