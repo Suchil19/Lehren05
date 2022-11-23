@@ -80,8 +80,7 @@ googleButton.addEventListener('click', e => {
   auth.signInWithPopup(provider)
   .then(result => {
     console.log('google sign in');
-    console.log(result.json());
-    const {user} = result;
+    const user = result.user;
     console.log(user.email);
     sendUserInformation();
     // aqui van los modales para cerrar 
