@@ -82,6 +82,7 @@ googleButton.addEventListener('click', e => {
     console.log('google sign in');
     const user = result.user;
     //saveIfUserDontExists(user);
+    getAllUsers();
     signupForm.reset();
     $('#signinModal').modal('hide');
     // setTimeout(() => {
@@ -243,5 +244,3 @@ function saveIfUserDontExists(user) {
         sendUserInformation(user);
     }
 }
-
-getAllUsers();
