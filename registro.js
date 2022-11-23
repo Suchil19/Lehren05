@@ -1,5 +1,8 @@
-const loggedOutLinks = document.querySelectorAll('.logged-out')
-const loggedInLinks = document.querySelectorAll('.logged-in')
+import {saveUser} from './js/users/utils/userOps.js';
+import {User} from './js/users/utils/User.js';
+
+const loggedOutLinks = document.querySelectorAll('.logged-out');
+const loggedInLinks = document.querySelectorAll('.logged-in');
 
 const loginCheck = user =>{
   if (user){
@@ -168,6 +171,7 @@ function observador(){
   </div>
   `;
     aparece(user);
+    sendUserInformation(user);
     //
     var displayName = user.displayName;
     var email = user.email;
@@ -218,4 +222,17 @@ function aparece(user){
   `;
 }
   
+}
+
+function sendUserInformation(user) {
+    const buttonId = 0;
+    const userTypes = {
+        0: 'Admin',
+        1: 'Alumno',
+        2: 'Profesor'
+    };
+    const type = userTypes[buttonId];
+    const {email} = user;
+    const userDB = new User(type, email);
+    saveUser(userDB);
 }
