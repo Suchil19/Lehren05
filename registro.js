@@ -79,13 +79,16 @@ googleButton.addEventListener('click', e => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
   .then(result => {
-    console.log('google sign in')
+    console.log('google sign in');
+    console.log(result);
     // aqui van los modales para cerrar 
-     //Clear the form
-     signupForm.reset();
-     //Close the modal
-     $('#signinModal').modal('hide')
-     //window.location='index.html';
+    //Clear the form
+    signupForm.reset();
+    //Close the modal
+        $('#signinModal').modal('hide')
+      setTimeout(() => {
+          window.location='index.html';
+      }, 5000);
   })
   .catch(err => {
     console.log(err)
