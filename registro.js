@@ -80,7 +80,7 @@ googleButton.addEventListener('click', e => {
   auth.signInWithPopup(provider)
   .then(result => {
     console.log('google sign in');
-    console.log(result);
+    console.log(result.json());
     const {user} = result;
     console.log(user.email);
     sendUserInformation();
