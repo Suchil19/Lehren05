@@ -1,5 +1,5 @@
 import {db} from '../firebase/conection.js';
-import {addDoc, deleteDoc, updateDoc, getDoc, collection, onSnapshot, doc} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
+import {addDoc, deleteDoc, getDoc, collection, onSnapshot, doc} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 
 console.log(fs);
 /**
@@ -51,5 +51,9 @@ export const deleteUser = (user) => {
     deleteDoc(doc(db, 'users', user.email));
 };
 
-
+export const userAlreadyExists = async (email) => {
+    const docRef = doc(db, 'users', email);
+    const docSnap = await getDoc(docRef);
+    return !!docSnap.exists();
+}
 
