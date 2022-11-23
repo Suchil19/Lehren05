@@ -88,7 +88,7 @@ googleButton.addEventListener('click', e => {
         $('#signinModal').modal('hide')
       setTimeout(() => {
           window.location='index.html';
-      }, 5000);
+      }, 10000);
   })
   .catch(err => {
     console.log(err)
