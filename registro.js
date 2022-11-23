@@ -84,9 +84,9 @@ googleButton.addEventListener('click', e => {
     saveIfUserDontExists(user);
     signupForm.reset();
     $('#signinModal').modal('hide');
-    setTimeout(() => {
-      window.location='index.html';
-    }, 10000);
+    // setTimeout(() => {
+    //   window.location='index.html';
+    // }, 10000);
   })
   .catch(err => {
     console.log(err)
