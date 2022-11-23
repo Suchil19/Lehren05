@@ -14,7 +14,7 @@ console.log(fs);
     };
     const usersCollection = collection(db, 'users');
     addDoc(usersCollection, userToSave).then(response => {
-        console.log(response);
+        console.log('Usuario registrador');
     }).catch(error => {
         console.log(error);
     });
