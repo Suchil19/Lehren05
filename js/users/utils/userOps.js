@@ -59,11 +59,15 @@ export const userAlreadyExists = (email) => {
 
 }
 
-export const getAllUsers = async () => {
+export const getAllUsers = async (email) => {
+    let userExists = false;
     const querySnapshot = await getDocs(collection(db, 'users'));
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        if(doc.data().email === email) {
+            userExists = true;
+        }
     });
+    return userExists;
 };
 
