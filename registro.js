@@ -239,7 +239,7 @@ function saveIfUserDontExists(user) {
     try {
         const exists = userAlreadyExists(email);
         if(exists) {
-            console.warn(`User ${sendUserInformation.email} already exists`);
+            console.warn(`User ${email} already exists`);
         } else {
             sendUserInformation(user);
         }
