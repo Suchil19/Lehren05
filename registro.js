@@ -1,4 +1,4 @@
-import {saveUser} from './js/users/utils/userOps.js';
+import {saveUser, userAlreadyExists} from './js/users/utils/userOps.js';
 import {User} from './js/users/utils/User.js';
 
 const loggedOutLinks = document.querySelectorAll('.logged-out');
@@ -81,16 +81,12 @@ googleButton.addEventListener('click', e => {
   .then(result => {
     console.log('google sign in');
     const user = result.user;
-    console.log(user.email);
-    sendUserInformation(user);
-    // aqui van los modales para cerrar 
-    //Clear the form
+    saveIfUserDontExists(user);
     signupForm.reset();
-    //Close the modal
-        $('#signinModal').modal('hide')
-      setTimeout(() => {
-          window.location='index.html';
-      }, 10000);
+    $('#signinModal').modal('hide');
+    setTimeout(() => {
+      window.location='index.html';
+    }, 10000);
   })
   .catch(err => {
     console.log(err)
@@ -236,4 +232,18 @@ function sendUserInformation(user) {
     const {email} = user;
     const userDB = new User(type, email);
     saveUser(userDB);
+}
+
+function saveIfUserDontExists(user) {
+    const {email} = user;
+    try {
+        const exists = userAlreadyExists(email);
+        if(exists) {
+            console.warn(`User ${sendUserInformation.email} already exists`);
+        } else {
+            sendUserInformation(user);
+        }
+    } catch(error) {
+        console.error(error);
+    }
 }
