@@ -54,7 +54,7 @@ export const deleteUser = (user) => {
 export const userAlreadyExists = async (email) => {
     const docRef = doc(db, 'users', email);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap, ' ',  email);
+    console.log(docSnap, !!docSnap.exists());
     return !!docSnap.exists();
 }
 
