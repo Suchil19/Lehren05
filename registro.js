@@ -22,24 +22,26 @@ signupForm.addEventListener('submit', (e) => {
     const email = document.querySelector('#signup-email').value;
     const password = document.querySelector('#signup-password').value;
 
-    auth.
-        createUserWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
             //Clear the form
-            signupForm. reset();
+            signupForm.reset();
 
             //Close the modal
-            $('#signupModal').modal('hide')
+            $('#signupModal').modal('hide');
+            console.log('sing up');
+            //sendUserInformation(user);
+            console.log(userCredential)
+            setTimeout(() => {
+                window.location='index.html';
+            }, 5000);
 
-            console.log('sing up')
-            window.location='index.html';
 
         })
 });
 
 // Sign In Event
 const signinForm = document.querySelector('#login-form');
-
 signinForm.addEventListener('submit', e => {
     e.preventDefault();
     const email = document.querySelector('#login-email').value;
@@ -52,9 +54,11 @@ signinForm.addEventListener('submit', e => {
 
             //Close the modal
             $('#signinModal').modal('hide')
+            console.log('sing in');
             //lo agregue yoppp
-            window.location='index.html';
-            console.log('sing in')
+            setTimeout(() => {
+                window.location='index.html';
+            }, 5000);
         })
 });
 
@@ -81,7 +85,7 @@ googleButton.addEventListener('click', e => {
      signupForm.reset();
      //Close the modal
      $('#signinModal').modal('hide')
-     window.location='index.html';
+     //window.location='index.html';
   })
   .catch(err => {
     console.log(err)
@@ -164,18 +168,15 @@ function observador(){
     if (user){
     console.log('existe usuario activo')
     contenido.innerHTML = `
-    <div class="container mt-5">
-    <div class="alert alert-info" role="alert">
-    Confirma tu correo y refresca esta pagina
-  </div>
-  </div>
-  `;
+        <div class="container mt-5">
+            <div class="alert alert-info" role="alert">
+                Confirma tu correo y refresca esta pagina
+            </div>
+        </div>
+    `;
     aparece(user);
-    sendUserInformation(user);
-    //
     var displayName = user.displayName;
     var email = user.email;
-
 
    // console.log('*******');
    // console.log(user.emailVerified)
@@ -190,13 +191,13 @@ function observador(){
   } else {
     console.log('no existe usuario activo')
     contenido.innerHTML = `
-    <!--div class="container mt-5">
-    <div class="alert alert-warning" role="alert">
-  Registrate con tu email y una contraseña. La contraseña debera tener
-  un minimo de 6 caracteres
-</div>
-</div-->
-  `;
+        <!--div class="container mt-5">
+        <div class="alert alert-warning" role="alert">
+          Registrate con tu email y una contraseña. La contraseña debera tener
+          un minimo de 6 caracteres
+        </div>
+        </div-->
+    `;
   }
   });
 }
@@ -209,16 +210,11 @@ function aparece(user){
   if(user.emailVerified){
 
   contenido.innerHTML = `
- 
-  <div ">
-  <br>
-  <p>Bienvenido.</p>
-  <h4 class="alert-heading">${user.email}</h4>
-
-
-  
-  </div>
-  
+      <div>
+          <br>
+          <p>Bienvenido.</p>
+          <h4 class="alert-heading">${user.email}</h4>
+      </div>
   `;
 }
   
