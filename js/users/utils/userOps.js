@@ -1,6 +1,7 @@
 import {db} from '../firebase/conection.js';
 import {addDoc, deleteDoc, updateDoc, getDoc, collection, onSnapshot, doc} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 
+console.log(fs);
 /**
  * @description Funcion que me ayudara a guardar objetos de tipo usuario dentro de la coleccion usuarios
  * @param type {string}
