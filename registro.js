@@ -81,9 +81,11 @@ googleButton.addEventListener('click', e => {
   .then(result => {
     console.log('google sign in');
     const user = result.user;
-
+    let exists = false;
     //saveIfUserDontExists(user);
-    const exists = getAllUsers();
+    getAllUsers().then(result => {
+        exists = result;
+    });
     if(exists) {
         console.warn('User already exists');
     } else {
