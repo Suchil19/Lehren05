@@ -236,14 +236,10 @@ function sendUserInformation(user) {
 
 function saveIfUserDontExists(user) {
     const {email} = user;
-    try {
-        const exists = userAlreadyExists(email);
-        if(exists) {
-            console.warn(`User ${email} already exists`);
-        } else {
-            sendUserInformation(user);
-        }
-    } catch(error) {
-        console.error(error);
+    const exists = userAlreadyExists(email);
+    if(exists) {
+        console.warn(`User ${email} already exists`);
+    } else {
+        sendUserInformation(user);
     }
 }
