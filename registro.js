@@ -1,4 +1,4 @@
-import {saveUser, userAlreadyExists} from './js/users/utils/userOps.js';
+import {saveUser, userAlreadyExists, getAllUsers} from './js/users/utils/userOps.js';
 import {User} from './js/users/utils/User.js';
 
 const loggedOutLinks = document.querySelectorAll('.logged-out');
@@ -243,3 +243,5 @@ function saveIfUserDontExists(user) {
         sendUserInformation(user);
     }
 }
+
+getAllUsers();
