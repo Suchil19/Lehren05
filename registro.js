@@ -1,5 +1,8 @@
-const loggedOutLinks = document.querySelectorAll('.logged-out')
-const loggedInLinks = document.querySelectorAll('.logged-in')
+import {saveUser, userAlreadyExists, getAllUsers} from './js/users/utils/userOps.js';
+import {User} from './js/users/utils/User.js';
+
+const loggedOutLinks = document.querySelectorAll('.logged-out');
+const loggedInLinks = document.querySelectorAll('.logged-in');
 
 const loginCheck = user =>{
   if (user){
@@ -19,24 +22,25 @@ signupForm.addEventListener('submit', (e) => {
     const email = document.querySelector('#signup-email').value;
     const password = document.querySelector('#signup-password').value;
 
-    auth.
-        createUserWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
             //Clear the form
-            signupForm. reset();
+            signupForm.reset();
 
             //Close the modal
-            $('#signupModal').modal('hide')
-
-            console.log('sing up')
-            window.location='index.html';
+            $('#signupModal').modal('hide');
+            console.log('sing up');
+            //sendUserInformation(user);
+            console.log(userCredential);
+            setTimeout(() => {
+                window.location='index.html';
+            }, 5000);
 
         })
 });
 
 // Sign In Event
 const signinForm = document.querySelector('#login-form');
-
 signinForm.addEventListener('submit', e => {
     e.preventDefault();
     const email = document.querySelector('#login-email').value;
@@ -49,9 +53,12 @@ signinForm.addEventListener('submit', e => {
 
             //Close the modal
             $('#signinModal').modal('hide')
+            console.log('sing in');
+            console.log(userCredential);
             //lo agregue yoppp
-            window.location='index.html';
-            console.log('sing in')
+            setTimeout(() => {
+                window.location='index.html';
+            }, 5000);
         })
 });
 
@@ -72,13 +79,23 @@ googleButton.addEventListener('click', e => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
   .then(result => {
-    console.log('google sign in')
-    // aqui van los modales para cerrar 
-     //Clear the form
-     signupForm.reset();
-     //Close the modal
-     $('#signinModal').modal('hide')
-     window.location='index.html';
+    console.log('google sign in');
+    const user = result.user;
+    let exists = false;
+    //saveIfUserDontExists(user);
+    getAllUsers().then(result => {
+        exists = result;
+    });
+    if(exists) {
+        console.warn('User already exists');
+    } else {
+        sendUserInformation(user);
+    }
+    signupForm.reset();
+    $('#signinModal').modal('hide');
+    // setTimeout(() => {
+    //   window.location='index.html';
+    // }, 10000);
   })
   .catch(err => {
     console.log(err)
@@ -161,17 +178,15 @@ function observador(){
     if (user){
     console.log('existe usuario activo')
     contenido.innerHTML = `
-    <div class="container mt-5">
-    <div class="alert alert-info" role="alert">
-    Confirma tu correo y refresca esta pagina
-  </div>
-  </div>
-  `;
+        <div class="container mt-5">
+            <div class="alert alert-info" role="alert">
+                Confirma tu correo y refresca esta pagina
+            </div>
+        </div>
+    `;
     aparece(user);
-    //
     var displayName = user.displayName;
     var email = user.email;
-
 
    // console.log('*******');
    // console.log(user.emailVerified)
@@ -186,13 +201,13 @@ function observador(){
   } else {
     console.log('no existe usuario activo')
     contenido.innerHTML = `
-    <!--div class="container mt-5">
-    <div class="alert alert-warning" role="alert">
-  Registrate con tu email y una contraseña. La contraseña debera tener
-  un minimo de 6 caracteres
-</div>
-</div-->
-  `;
+        <!--div class="container mt-5">
+        <div class="alert alert-warning" role="alert">
+          Registrate con tu email y una contraseña. La contraseña debera tener
+          un minimo de 6 caracteres
+        </div>
+        </div-->
+    `;
   }
   });
 }
@@ -205,17 +220,35 @@ function aparece(user){
   if(user.emailVerified){
 
   contenido.innerHTML = `
- 
-  <div ">
-  <br>
-  <p>Bienvenido.</p>
-  <h4 class="alert-heading">${user.email}</h4>
-
-
-  
-  </div>
-  
+      <div>
+          <br>
+          <p>Bienvenido.</p>
+          <h4 class="alert-heading">${user.email}</h4>
+      </div>
   `;
 }
   
+}
+
+function sendUserInformation(user) {
+    const buttonId = 0;
+    const userTypes = {
+        0: 'Admin',
+        1: 'Alumno',
+        2: 'Profesor'
+    };
+    const type = userTypes[buttonId];
+    const {email} = user;
+    const userDB = new User(type, email);
+    saveUser(userDB);
+}
+
+function saveIfUserDontExists(user) {
+    const {email} = user;
+    const exists = userAlreadyExists(email);
+    if(exists) {
+        console.warn(`User ${email} already exists`);
+    } else {
+        sendUserInformation(user);
+    }
 }
