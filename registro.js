@@ -127,21 +127,21 @@ const setupPosts = data => {
       data.forEach(doc => {
         const post = doc.data()
         const li = `
-        <li class="list-group-item list-group-item-action">
+        <!--li class="list-group-item list-group-item-action">
         <h4><i class="fas fa-comment-medical"></i>&nbsp;${post.titulo}</h4>
         <p>${post.descripcion}</p>
         <a href="tel:5583743064"><button type="button" class="btn btn-info">Agenda tu cita ahora</button></a>
         <br>
         <br>
         <h6><i class="far fa-clock"></i>&nbsp;${post.fecha}</h6>
-        </li>
+        </li-->
       <br>
       `;
         html += li;
       });
       postList.innerHTML = html;
     } else {
-      postList.innerHTML = '<p class="text-center"> Registrate en tu teléfono móvil para ver las últimas noticias. </p>';
+      postList.innerHTML = '<!--p class="text-center"> Registrate en tu teléfono móvil para ver las últimas noticias. </p-->';
     }
   }
 

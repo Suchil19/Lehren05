@@ -198,3 +198,41 @@ class Slideshow {
   addLoadClass();
 })();
 
+
+  /* Video Popup*/
+
+  $(document).ready(function(){
+    const videoSrc = $("#player-1").attr("src");
+    $(".video-play-btn, .video-popup").on("click" , function(){
+      if($(".video-popup").hasClass("open")){
+        $(".video-popup").removeClass("open");
+        $("#player-1").attr("src" , "");
+      }
+      else{
+        $(".video-popup").addClass("open");
+        if($("#player-1").attr("src")==''){
+          $("#player-1").attr("src" , videoSrc);
+        }
+      }
+    });
+    });
+  
+    /* Termina Video PopUp */
+
+
+
+    /*** ACORDEON */
+    // ACCORDEON
+    $(document).ready(function(){
+$(".my-accordeon .panel").on("click", function () {
+  toggleAccordeon($(this));
+ });
+ 
+ function toggleAccordeon(el) {
+  if (el.hasClass("show")) {
+   el.removeClass("show").find(".toggle").slideUp();
+  } else {
+   el.addClass("show").find(".toggle").slideDown();
+  }
+ }});
+ 
