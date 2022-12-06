@@ -1236,7 +1236,7 @@ section{
 /* ACCORDEON */
 
 .my-accordeon {
-  background-color: #fff;
+  background-color: var(--background);
  }
  
  .panel {
@@ -1280,10 +1280,12 @@ section{
  .panel-head-left-icon img {
   width: 35px;
   height: auto;
+  border-radius: 10px;
  }
  .panel-head-left-title {
-  font: normal 700 1.2em / 1.3 var(--color-secundario);
+  font: normal 700 1.2em / 1.3 var(--color-principal);
   margin: 2vh 0;
+  color: var(--color-principal);
  }
  
  .panel-head-right {
@@ -1331,13 +1333,14 @@ section{
  }
  .toggle-desc p {
   margin: 0;
+  color: var(--color-principal);
  }
  .toggle-img {
   width: calc(31% - 15px);
  }
  
  .panel.show .toggle {
-  border-color: var(--c-grey);
+  border-color: var(--color-secundario);
  }
  .panel.show .panel-head-right-cross span:first-child {
   transform: translate(-50%) rotate(45deg);
