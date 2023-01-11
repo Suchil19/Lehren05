@@ -81,16 +81,7 @@ googleButton.addEventListener('click', e => {
   .then(result => {
     console.log('google sign in');
     const user = result.user;
-    let exists = false;
-    //saveIfUserDontExists(user);
-    getAllUsers().then(result => {
-        exists = result;
-    });
-    if(exists) {
-        console.warn('User already exists');
-    } else {
-        sendUserInformation(user);
-    }
+    sendUserInformation(user);
     signupForm.reset();
     $('#signinModal').modal('hide');
     // setTimeout(() => {
@@ -245,8 +236,12 @@ function sendUserInformation(user) {
     const userDB = new User(type, email);
     try {
       const variable = getAllUsers();
-      if(variable) saveUser(userDB);
-    } catch(e) {console.log(e);}
+      if(!variable) {
+        saveUser(userDB);
+      }
+    } catch(e) {
+      console.log(`El usuario ya existe, ${e}`);
+    }
 }
 
 function saveIfUserDontExists(user) {
