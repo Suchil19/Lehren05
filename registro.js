@@ -1,4 +1,4 @@
-import {saveUser, userAlreadyExists, getAllUsers} from './js/users/utils/userOps.js';
+import {saveUser, userAlreadyExists, getAllUsers, getUser} from './js/users/utils/userOps.js';
 import {User} from './js/users/utils/User.js';
 
 const loggedOutLinks = document.querySelectorAll('.logged-out');
@@ -89,6 +89,7 @@ googleButton.addEventListener('click', e => {
     if(exists) {
         console.warn('User already exists');
     } else {
+        getUser(user, email).then(r => console.log(r));
         sendUserInformation(user);
     }
     signupForm.reset();

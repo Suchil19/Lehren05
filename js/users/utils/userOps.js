@@ -24,11 +24,16 @@ console.log(fs);
  * @description Funcion que me ayudara a obtener la coleccion de usuarios
  * @param callback {funtion}
  * */
-export const getUsers = (callback) => {
-    //const tasksCollection = collection(db, 'tasks').orderBy("title", "asc");
-    const usersCollection = collection(db, 'users');
+export const getUser = async (email) => {
+  const docRef = doc(db, "users", email);
+  const docSnap = await getDoc(docRef);
 
-    onSnapshot(usersCollection, callback);
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
 };
 
 export const getUserByEmail = (email) => {
