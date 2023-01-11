@@ -231,14 +231,17 @@ function aparece(user){
 }
 
 function sendUserInformation(user) {
-    const buttonId = 0;
+    //const buttonId = 0;
     const userTypes = {
-        0: 'Admin',
-        1: 'Alumno',
-        2: 'Profesor'
+        'gmail.com': 'Alumno',
+        'ipn.mx': 'Profesor'
     };
-    const type = userTypes[buttonId];
+
+    const allowDomains = ['ipn.mx', 'gmail.com'];
+
     const {email} = user;
+    const domain = email.split('@')[1];
+    const type = allowDomains.includes(domain) ? userTypes[domain] : userTypes[domain];
     const userDB = new User(type, email);
     saveUser(userDB);
 }
