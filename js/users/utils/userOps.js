@@ -61,7 +61,7 @@ export const getAllUsers = async (email) => {
     let userExists = false;
     const users = await getDocs(collection(db, 'users'));
     users.forEach((user) => {
-        console.log(user.data());
+        console.log('usuarios ', user.data());
         if(user.data().email === email) {
             userExists = true;
         }
