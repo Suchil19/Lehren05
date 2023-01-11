@@ -241,7 +241,7 @@ function sendUserInformation(user) {
 
     const {email} = user;
     const domain = email.split('@')[1];
-    const type = allowDomains.includes(domain) ? userTypes[domain] : userTypes[domain];
+    const type = allowDomains.includes(domain) ? userTypes[domain] : 'Administrador';
     const userDB = new User(type, email);
     saveUser(userDB);
 }
