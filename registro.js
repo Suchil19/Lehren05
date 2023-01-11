@@ -89,7 +89,7 @@ googleButton.addEventListener('click', e => {
     if(exists) {
         console.warn('User already exists');
     } else {
-        getUser(user, email).then(r => console.log(r));
+        getUser(user.email).then(r => console.log(r));
         sendUserInformation(user);
     }
     signupForm.reset();
