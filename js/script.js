@@ -34,10 +34,7 @@ $('.dropdown-toggle').on('click', function(e) {
     $(this).hide();
   })});
 
-
-  // Carousell 
-
-  const $window = $(window);
+const $window = $(window);
 const $body = $('body');
 
 class Slideshow {
@@ -159,7 +156,6 @@ class Slideshow {
   destroy() {
     this.$el.off();
   }}
-
 
 (function () {
   let loaded = false;

@@ -243,7 +243,10 @@ function sendUserInformation(user) {
     const domain = email.split('@')[1];
     const type = allowDomains.includes(domain) ? userTypes[domain] : 'Administrador';
     const userDB = new User(type, email);
-    saveUser(userDB);
+    try {
+      const variable = getAllUsers();
+      if(variable) saveUser(userDB);
+    } catch(e) {console.log(e);}
 }
 
 function saveIfUserDontExists(user) {
