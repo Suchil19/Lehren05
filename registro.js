@@ -254,4 +254,9 @@ function saveIfUserDontExists(user) {
     } else {
         sendUserInformation(user);
     }
+
+    try {
+      const variable = getAllUsers();
+      console.log(variable);
+    } catch(e) {console.log(e);}
 }

@@ -1,7 +1,6 @@
 import {db} from '../firebase/conection.js';
 import {addDoc, deleteDoc, getDoc, collection, onSnapshot, doc, getDocs} from 'https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js';
 
-console.log(fs);
 /**
  * @description Funcion que me ayudara a guardar objetos de tipo usuario dentro de la coleccion usuarios
  * @param type {string}
@@ -56,18 +55,16 @@ export const userAlreadyExists = (email) => {
     const docSnap = getDoc(docRef);
     console.log(docSnap, !!docSnap.exists());
     return !!docSnap.exists();
-
 }
 
 export const getAllUsers = async (email) => {
     let userExists = false;
     const querySnapshot = await getDocs(collection(db, 'users'));
     querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.data());
         if(doc.data().email === email) {
             userExists = true;
         }
     });
     return userExists;
 };
-
